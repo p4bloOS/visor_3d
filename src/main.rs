@@ -8,7 +8,11 @@ fn main() {
     // Trazas en la salida estándar (si se ejecuta con `RUST_LOG=debug`).
     tracing_subscriber::fmt::init();
 
-    let native_options = eframe::NativeOptions::default();
+    let native_options = eframe::NativeOptions {
+        multisampling: 4,
+        renderer: eframe::Renderer::Glow,
+        ..Default::default()
+    };
     eframe::run_native(
         "Mi primera IGU en Rust",
         native_options,
